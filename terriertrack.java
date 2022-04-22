@@ -199,13 +199,21 @@ class terriertrack {
                 }
 
                 // Input number of shares
+                int n;
+                while (true) {
+                    Scanner value2 = new Scanner(System.in);
+                    System.out.println("How many shares of " + name + " would you like to buy?");
+                    String num = value2.nextLine();
+                    value2.close();
 
-                Scanner value2 = new Scanner(System.in);
-                System.out.println("How many shares of " + name + " would you like to buy?");
-                String num = value2.nextLine();
-                value2.close();
+                    n = Integer.parseInt(num);
+                    if (n <= 0) {
+                        System.out.println("Not a valid number of stocks to buy.");
+                    } else {
+                        break;
+                    }
+                }
 
-                int n = Integer.parseInt(num);
                 boolean success = buyStock(s, n);
 
                 if (success) {
@@ -232,13 +240,21 @@ class terriertrack {
                 }
 
                 // Input number of shares
+                int n;
+                while (true) {
+                    Scanner value2 = new Scanner(System.in);
+                    System.out.println("How many shares of " + name + " would you like to sell?");
+                    String num = value2.nextLine();
+                    value2.close();
 
-                Scanner value2 = new Scanner(System.in);
-                System.out.println("How many shares of " + name + " would you like to sell?");
-                String num = value2.nextLine();
-                value2.close();
+                    n = Integer.parseInt(num);
+                    if (n <= 0) {
+                        System.out.println("Not a valid number of stocks to sell.");
+                    } else {
+                        break;
+                    }
+                }
 
-                int n = Integer.parseInt(num);
                 boolean success = sellStock(s, n);
 
                 if (success) {
