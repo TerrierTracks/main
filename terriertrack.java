@@ -56,9 +56,11 @@ class terriertrack {
         }
     }
 
+    Stock msft = new Stock("MSFT", 50);
+
     // displayWelcome - displays the welcome page
     private static void displayWelcome() {
-        System.out.println("Wecome to TerrierTrack!");
+        System.out.println("Welcome to TerrierTrack!");
         System.out.println("");
     }
 
@@ -116,6 +118,19 @@ class terriertrack {
         return false;
     }
 
+    // removeFromList - helper function that removes stock s from a list of
+    // stocks, returns true to indicate success
+    private static boolean removeFromList(Stock s, Stock[] list) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i].name == s.name) {
+                list[i] = null;
+                return true;
+            } 
+        }
+        System.out.println("Stock cannot be found");
+        return false;
+    }
+
     // buyStock - buys n shares of a Stock s
     private static boolean buyStock(Stock s, int n) {
         int p = s.getPrice();
@@ -140,6 +155,13 @@ class terriertrack {
         }
         return false;
     }
+
+    // displayStock - displays key information of stock s in single line
+    private static void displayStock(Stock s) {
+        System.out.println(s.getName() + " " + s.getPrice());
+    }
+
+
 
     // Main method
     public static void main(String[] args) {
@@ -264,8 +286,42 @@ class terriertrack {
                 }
 
             } else if (input.equals("5")) {
+                // Get which stock they want to add to favourites
+                String name;
+                Stock s;
+                while (true) {
+                    Scanner value = new Scanner(System.in);
+                    System.out.println("What Stock do you wish to add to your favourites?");
+                    name = value.nextLine();
+                    value.close();
+                    s = search(name);
+
+                    if (s == null) {
+                        System.out.println("We cannot find that stock name, please enter another name.");
+                    } else {
+                        addToList(s, favorites, 1);
+                        break;
+                    }
+                }
 
             } else if (input.equals("6")) {
+                // Get which stock they want to remove from favourites
+                String name;
+                Stock s;
+                while (true) {
+                    Scanner value = new Scanner(System.in);
+                    System.out.println("What Stock do you wish to add to your favourites?");
+                    name = value.nextLine();
+                    value.close();
+                    s = search(name);
+
+                    if (s == null) {
+                        System.out.println("We cannot find that stock name, please enter another name.");
+                    } else {
+                        removeFromList(s, favorites);
+                        break;
+                    }
+                }
 
             } else if (input.equals("7")) {
                 System.out.println("Goodbye!");
