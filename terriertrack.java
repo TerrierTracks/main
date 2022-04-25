@@ -14,14 +14,25 @@ class terriertrack {
     public class Stock {
 
         // Attributes
+        private String ticker;
         private String name;
-        private int price;
+        private float openingPrice;
+        private float currPrice;
+        private int marketCap;
+        private float low;
+        private float high;
         private int shares;
 
         // Constructors
-        public Stock(String name, int price) {
+        public Stock(String ticker, String name, float openingPrice, float currPrice, int marketCap, float low,
+                float high) {
+            this.ticker = ticker;
             this.name = name;
-            this.price = price;
+            this.openingPrice = openingPrice;
+            this.currPrice = currPrice;
+            this.marketCap = marketCap;
+            this.low = low;
+            this.high = high;
             this.shares = 1;
         }
 
@@ -31,8 +42,8 @@ class terriertrack {
         }
 
         // getPrice - returns the price of one share of the stock
-        public int getPrice() {
-            return this.price;
+        public float getCurrPrice() {
+            return this.currPrice;
         }
 
         // getShares - returns how many shares you have of a stock
@@ -47,9 +58,9 @@ class terriertrack {
 
         public boolean equals(Stock other) {
             String otherName = other.getName();
-            int otherPrice = other.getPrice();
+            float otherPrice = other.getCurrPrice();
 
-            if (this.name.equals(otherName) && this.price == otherPrice) {
+            if (this.name.equals(otherName) && this.currPrice == otherPrice) {
                 return true;
             }
             return false;
@@ -133,7 +144,7 @@ class terriertrack {
 
     // buyStock - buys n shares of a Stock s
     private static boolean buyStock(Stock s, int n) {
-        int p = s.getPrice();
+        float p = s.getCurrPrice();
         if (n * p <= BALANCE && addToList(s, holdings, n)) {
             BALANCE -= p;
             return true;
@@ -143,7 +154,7 @@ class terriertrack {
 
     // sellStock - sells n shares of a stock s
     private static boolean sellStock(Stock s, int n) {
-        int p = s.getPrice();
+        float p = s.getCurrPrice();
         int index = findStock(s, holdings);
         if (index != -1 && n <= s.getShares()) {
             BALANCE += n * p;
