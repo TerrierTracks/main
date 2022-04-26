@@ -109,19 +109,22 @@ class terriertrack {
 
     // displayWelcome - displays the welcome page
     private static void displayWelcome() {
+        System.out.println("");
         System.out.println("Welcome to TerrierTrack!");
         System.out.println("");
     }
 
     // displayHome - displays the Home page
     private static void displayHome() {
+        System.out.println("");
         System.out.println("Home Page");
         System.out.println("");
+        System.out.println("You currently have $" + BALANCE + " in your account.\n");
         if (favorites[0] != null) {
             System.out.println("Your Favorite Stocks Are:");
             for (int i = 0; i < favorites.length; i++) {
-                if (favorites[i] != null){
-                displayStock(favorites[i]);
+                if (favorites[i] != null) {
+                    displayStock(favorites[i]);
                 }
             }
         }
@@ -133,7 +136,7 @@ class terriertrack {
         System.out.println(" 4.) Sell a Stock");
         System.out.println(" 5.) Add to Favorites");
         System.out.println(" 6.) Remove from Favorites");
-        System.out.println(" 7.) Quit");
+        System.out.println(" 7.) Quit\n");
 
     }
 
@@ -421,7 +424,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to add to your favourites?");
                     name = value.nextLine();
-                    //value.close();
+                    // value.close();
                     s = search(name);
 
                     if (s == null) {
@@ -440,7 +443,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to remove from your favourites?");
                     name = value.nextLine();
-                    //value.close();
+                    // value.close();
                     s = search(name);
 
                     if (s == null) {
