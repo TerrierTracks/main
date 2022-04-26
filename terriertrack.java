@@ -9,7 +9,7 @@ class terriertrack {
     // static variables: BALANCE shows how much money you have to spend, favorites
     // is a list of your favorite stocks, holdings is a list of the stocks you have
     // bought
-    static int BALANCE = 1000;
+    static double BALANCE = 1000;
     static Stock[] favorites = new Stock[5];
     static Stock[] holdings = new Stock[20];
 
@@ -380,14 +380,16 @@ class terriertrack {
                 // Get which stock they want to sell
                 String name;
                 Stock s;
+                int i;
                 while (true) {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to sell?");
                     name = value.nextLine();
                     // value.close();
                     s = search(name);
+                    i = findStock(s, holdings);
 
-                    if (findStock(s, holdings) == -1) {
+                    if (i == -1) {
                         System.out.println("We cannot find that stock name, please enter another name.");
                     } else {
                         break;
@@ -410,7 +412,7 @@ class terriertrack {
                     }
                 }
 
-                boolean success = sellStock(s, n);
+                boolean success = sellStock(holdings[i], n);
 
                 if (success) {
                     System.out
