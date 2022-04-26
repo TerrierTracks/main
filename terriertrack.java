@@ -93,6 +93,18 @@ class terriertrack {
             }
             return false;
         }
+
+        public String toString() {
+            String str = this.name + ":\n";
+            str += "\n";
+            str += "Code: " + this.ticker + "\n";
+            str += "Opening Price: " + this.openingPrice + "\n";
+            str += "Current Price: " + this.currPrice + "\n";
+            str += "Market Cap: " + this.marketCap + "\n";
+            str += "Low Value: " + this.low + "\n";
+            str += "High Value: " + this.high + "\n";
+            return str;
+        }
     }
 
     // displayWelcome - displays the welcome page
@@ -105,9 +117,14 @@ class terriertrack {
     private static void displayHome() {
         System.out.println("Home Page");
         System.out.println("");
+        System.out.println("Your Favorite Stocks Are:");
+        for (int i = 0; i < favorites.length; i++) {
+            displayStock(favorites[i]);
+        }
+        System.out.println("");
 
         System.out.println(" 1.) Search for a Company");
-        System.out.println(" 2.) Get your Earnings");
+        System.out.println(" 2.) Show owned Stocks");
         System.out.println(" 3.) Buy a Stock");
         System.out.println(" 4.) Sell a Stock");
         System.out.println(" 5.) Add to Favorites");
@@ -118,6 +135,8 @@ class terriertrack {
 
     // Helper methods
 
+    // parse - helper method for stock. Reads a csv file filled with stock
+    // information and returns a list of the searched ticker's stock
     private static String[] parse(String ticker) {
         String line = "";
         String splitBy = ",";
@@ -140,6 +159,7 @@ class terriertrack {
         return new String[0];
     }
 
+    // search - searches for a stock of the inputed ticker
     private static Stock search(String ticker) {
         String[] stringList = parse(ticker);
         if (stringList.length == 7) {
@@ -231,7 +251,7 @@ class terriertrack {
     }
 
     // displayStock - displays key information of stock s in single line
-    private static void displayStock(Stock s) {
+    public static void displayStock(Stock s) {
         System.out.println(s.getName() + " " + s.getCurrPrice());
     }
 
@@ -271,7 +291,35 @@ class terriertrack {
 
             if (input.equals("1")) {
 
+                String name;
+                Stock s;
+                while (true) {
+                    Scanner value = new Scanner(System.in);
+                    System.out.println("Enter a Valid Company Code in all CAPS.");
+                    name = value.nextLine();
+                    value.close();
+                    s = search(name);
+                    if (s == null) {
+                        System.out.println("Sorry, that company doesn't exist in our system. Try again.");
+                    } else {
+                        System.out.println(s);
+                        break;
+                    }
+
+                }
+
             } else if (input.equals("2")) {
+
+                // This will display all the stocks in holdings, provided the list isn't empty
+                if (holdings.length == 0) {
+                    System.out.println("You don't currently own any stocks.");
+                } else {
+                    for (int i = 0; i < holdings.length; i++) {
+                        System.out.println(holdings[i]);
+                        System.out.println(holdings[i].getShares());
+                        System.out.println("");
+                    }
+                }
 
             } else if (input.equals("3")) {
 
@@ -316,7 +364,7 @@ class terriertrack {
                     System.out.println("Sorry, you don't have enough to buy a stock for " + name + ".");
                 }
             } else if (input.equals("4")) {
-                // Get which stock they want to buy
+                // Get which stock they want to sell
                 String name;
                 Stock s;
                 while (true) {
