@@ -387,7 +387,7 @@ class terriertrack {
                     // value.close();
                     s = search(name);
 
-                    if (s == null) {
+                    if (findStock(s, holdings) == -1) {
                         System.out.println("We cannot find that stock name, please enter another name.");
                     } else {
                         break;
