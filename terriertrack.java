@@ -14,7 +14,7 @@ class terriertrack {
     static Stock[] holdings = new Stock[20];
 
     // Object Class to represent a stock
-    public class Stock {
+    public static class Stock {
 
         // Attributes
         private String ticker;
@@ -117,10 +117,11 @@ class terriertrack {
     private static void displayHome() {
         System.out.println("Home Page");
         System.out.println("");
+        if (favorites[0] != null) {
         System.out.println("Your Favorite Stocks Are:");
-        for (int i = 0; i < favorites.length; i++) {
+            for (int i = 0; i < favorites.length; i++) {
             displayStock(favorites[i]);
-        }
+        }}
         System.out.println("");
 
         System.out.println(" 1.) Search for a Company");
@@ -142,7 +143,7 @@ class terriertrack {
         String splitBy = ",";
         try {
             // parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/TerrierTracksStocks.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("TerrierTracksStocks.csv"));
             while ((line = br.readLine()) != null) {
                 String[] stock = line.split(splitBy); // use comma as separator
                 if (stock[0].equals(ticker)) {
@@ -257,7 +258,7 @@ class terriertrack {
 
     // Main method
     public static void main(String[] args) {
-
+        
         // We start our interface on the welcome page.
         displayWelcome();
 
@@ -266,8 +267,7 @@ class terriertrack {
             System.out.println("Type 'Home' to go to the home page.");
 
             String input = myObj.nextLine(); // Read user input
-
-            myObj.close();
+            // myObj.close() 
 
             if (input.equals("Home") || input.equals("home")) {
                 break;
@@ -286,8 +286,8 @@ class terriertrack {
             System.out.println("Type the number to choose an option.");
 
             String input = myObj.nextLine(); // Read user input
+            // myObj.close() 
 
-            myObj.close();
 
             if (input.equals("1")) {
 
@@ -297,7 +297,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("Enter a Valid Company Code in all CAPS.");
                     name = value.nextLine();
-                    value.close();
+                    // value.close()   
                     s = search(name);
                     if (s == null) {
                         System.out.println("Sorry, that company doesn't exist in our system. Try again.");
