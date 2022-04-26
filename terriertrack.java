@@ -120,7 +120,9 @@ class terriertrack {
         if (favorites[0] != null) {
             System.out.println("Your Favorite Stocks Are:");
             for (int i = 0; i < favorites.length; i++) {
+                if (favorites[i] != null){
                 displayStock(favorites[i]);
+                }
             }
         }
         System.out.println("");
@@ -200,16 +202,16 @@ class terriertrack {
     // addToList - helper function that adds n shares of a stock s to a list of
     // stocks, returns true to indicate success
     private static boolean addToList(Stock s, Stock[] list, int n) {
-        int index = findStock(s, holdings);
+        int index = findStock(s, list);
         if (index != -1) {
-            holdings[index].updateShares(n);
+            list[index].updateShares(n);
             return true;
         }
         int j = findEmptySlot(list);
 
         if (j != -1) {
             s.updateShares(n - 1);
-            holdings[j] = s;
+            list[j] = s;
             return true;
         }
         return false;
@@ -219,7 +221,9 @@ class terriertrack {
     // stocks, returns true to indicate success
     private static boolean removeFromList(Stock s, Stock[] list) {
         for (int i = 0; i < list.length; i++) {
-            if (list[i].name == s.name) {
+            if (list[i] == null) {
+                continue;
+            } else if (list[i].equals(s)) {
                 list[i] = null;
                 return true;
             }
@@ -417,7 +421,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to add to your favourites?");
                     name = value.nextLine();
-                    value.close();
+                    //value.close();
                     s = search(name);
 
                     if (s == null) {
@@ -434,9 +438,9 @@ class terriertrack {
                 Stock s;
                 while (true) {
                     Scanner value = new Scanner(System.in);
-                    System.out.println("What Stock do you wish to add to your favourites?");
+                    System.out.println("What Stock do you wish to remove from your favourites?");
                     name = value.nextLine();
-                    value.close();
+                    //value.close();
                     s = search(name);
 
                     if (s == null) {
