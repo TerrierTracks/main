@@ -15,7 +15,7 @@ class terriertrack {
     static Stock[] favorites = new Stock[5];
     static Stock[] holdings = new Stock[20];
 
-    //ANSI Color Definitions for Printing Color in Terminal
+    // ANSI Color Definitions for Printing Color in Terminal
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -115,12 +115,12 @@ class terriertrack {
         }
 
         private double dayChangePrice() {
-            double changePrice = this.currPrice-this.openingPrice;
+            double changePrice = this.currPrice - this.openingPrice;
             return changePrice;
         }
-    
+
         private double dayChangePercent() {
-            double changePercent = (this.dayChangePrice()/this.openingPrice)*100;
+            double changePercent = (this.dayChangePrice() / this.openingPrice) * 100;
             return changePercent;
         }
     }
@@ -150,7 +150,7 @@ class terriertrack {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
+
         }
         System.out.println("");
 
@@ -286,18 +286,18 @@ class terriertrack {
         return false;
     }
 
-    
-
     // displayStock - displays key information of stock s in single line
     public static void displayStock(Stock s) {
         double change = s.dayChangePercent();
 
         if (change < 0.0) {
-            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_RED + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
+            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_RED
+                    + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
         } else {
-            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_GREEN + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
+            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_GREEN
+                    + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
         }
-        
+
     }
 
     // Main method
@@ -350,6 +350,11 @@ class terriertrack {
                     }
 
                 }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
 
             } else if (input.equals("2")) {
 
@@ -365,6 +370,11 @@ class terriertrack {
                         }
 
                     }
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
                 }
 
             } else if (input.equals("3")) {
@@ -408,6 +418,11 @@ class terriertrack {
                     System.out.println("You have successfully bought a share for " + name + ", congratulations.");
                 } else {
                     System.out.println("Sorry, you don't have enough to buy a stock for " + name + ".");
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
                 }
             } else if (input.equals("4")) {
                 // Get which stock they want to sell
@@ -453,6 +468,11 @@ class terriertrack {
                 } else {
                     System.out.println("Sorry, we could not sell your " + name + " stock.");
                 }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
 
             } else if (input.equals("5")) {
                 // Get which stock they want to add to favourites
@@ -472,6 +492,11 @@ class terriertrack {
                         break;
                     }
                 }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
 
             } else if (input.equals("6")) {
                 // Get which stock they want to remove from favourites
@@ -490,6 +515,11 @@ class terriertrack {
                         removeFromList(s, favorites);
                         break;
                     }
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
                 }
 
             } else if (input.equals("7")) {
