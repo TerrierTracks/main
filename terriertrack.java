@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 //main class for our Stock Tracker application
 class terriertrack {
@@ -16,16 +19,16 @@ class terriertrack {
         // Attributes
         private String ticker;
         private String name;
-        private float openingPrice;
-        private float currPrice;
-        private int marketCap;
-        private float low;
-        private float high;
+        private double openingPrice;
+        private double currPrice;
+        private long marketCap;
+        private double low;
+        private double high;
         private int shares;
 
-        // Constructors
-        public Stock(String ticker, String name, float openingPrice, float currPrice, int marketCap, float low,
-                float high) {
+        // Constructor
+        public Stock(String ticker, String name, double openingPrice, double currPrice, long marketCap, double low,
+                double high) {
             this.ticker = ticker;
             this.name = name;
             this.openingPrice = openingPrice;
@@ -36,14 +39,39 @@ class terriertrack {
             this.shares = 1;
         }
 
+        // getTicker - returns the company ticker of the stock
+        public String getTicker() {
+            return this.ticker;
+        }
+
         // getName - returns the company name of the stock
         public String getName() {
             return this.name;
         }
 
+        // getOpeningPrice - returns the stock's opening price
+        public double getOpeningPrice() {
+            return this.openingPrice;
+        }
+
         // getPrice - returns the price of one share of the stock
-        public float getCurrPrice() {
+        public double getCurrPrice() {
             return this.currPrice;
+        }
+
+        // getMarketCap - return the stock's market cap
+        public long getMarketCap() {
+            return this.marketCap;
+        }
+
+        // getHigh - returns the stock's high
+        public double getHigh() {
+            return this.high;
+        }
+
+        // getLow - returns the stock's low
+        public double getLow() {
+            return this.low;
         }
 
         // getShares - returns how many shares you have of a stock
@@ -58,7 +86,7 @@ class terriertrack {
 
         public boolean equals(Stock other) {
             String otherName = other.getName();
-            float otherPrice = other.getCurrPrice();
+            double otherPrice = other.getCurrPrice();
 
             if (this.name.equals(otherName) && this.currPrice == otherPrice) {
                 return true;
@@ -66,8 +94,6 @@ class terriertrack {
             return false;
         }
     }
-
-    Stock msft = new Stock("MSFT", 50);
 
     // displayWelcome - displays the welcome page
     private static void displayWelcome() {
@@ -91,6 +117,43 @@ class terriertrack {
     }
 
     // Helper methods
+
+    private static String[] parse(String ticker) {
+        String line = "";
+        String splitBy = ",";
+        try {
+            // parsing a CSV file into BufferedReader class constructor
+            BufferedReader br = new BufferedReader(new FileReader("src/TerrierTracksStocks.csv"));
+            while ((line = br.readLine()) != null) {
+                String[] stock = line.split(splitBy); // use comma as separator
+                if (stock[0].equals(ticker)) {
+                    br.close();
+                    return stock;
+
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return new String[0];
+    }
+
+    private static Stock search(String ticker) {
+        String[] stringList = parse(ticker);
+        if (stringList.length == 7) {
+            double openingPrice = Double.parseDouble(stringList[2]);
+            double currPrice = Double.parseDouble(stringList[3]);
+            long marketCap = Long.parseLong(stringList[4]);
+            double low = Double.parseDouble(stringList[5]);
+            double high = Double.parseDouble(stringList[6]);
+            Stock s = new Stock(stringList[0], stringList[1], openingPrice, currPrice, marketCap, low, high);
+            return s;
+        }
+        return null;
+
+    }
 
     private static int findEmptySlot(Stock[] list) {
         for (int i = 0; i < list.length; i++) {
@@ -136,7 +199,7 @@ class terriertrack {
             if (list[i].name == s.name) {
                 list[i] = null;
                 return true;
-            } 
+            }
         }
         System.out.println("Stock cannot be found");
         return false;
@@ -144,7 +207,7 @@ class terriertrack {
 
     // buyStock - buys n shares of a Stock s
     private static boolean buyStock(Stock s, int n) {
-        float p = s.getCurrPrice();
+        double p = s.getCurrPrice();
         if (n * p <= BALANCE && addToList(s, holdings, n)) {
             BALANCE -= p;
             return true;
@@ -154,7 +217,7 @@ class terriertrack {
 
     // sellStock - sells n shares of a stock s
     private static boolean sellStock(Stock s, int n) {
-        float p = s.getCurrPrice();
+        double p = s.getCurrPrice();
         int index = findStock(s, holdings);
         if (index != -1 && n <= s.getShares()) {
             BALANCE += n * p;
@@ -169,10 +232,8 @@ class terriertrack {
 
     // displayStock - displays key information of stock s in single line
     private static void displayStock(Stock s) {
-        System.out.println(s.getName() + " " + s.getPrice());
+        System.out.println(s.getName() + " " + s.getCurrPrice());
     }
-
-
 
     // Main method
     public static void main(String[] args) {
