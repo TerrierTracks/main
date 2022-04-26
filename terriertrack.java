@@ -102,7 +102,7 @@ class terriertrack {
             str += "Current Price: " + this.currPrice + "\n";
             str += "Market Cap: " + this.marketCap + "\n";
             str += "Low Value: " + this.low + "\n";
-            str += "High Value: " + this.high + "\n";
+            str += "High Value: " + this.high;
             return str;
         }
     }
@@ -118,10 +118,11 @@ class terriertrack {
         System.out.println("Home Page");
         System.out.println("");
         if (favorites[0] != null) {
-        System.out.println("Your Favorite Stocks Are:");
+            System.out.println("Your Favorite Stocks Are:");
             for (int i = 0; i < favorites.length; i++) {
-            displayStock(favorites[i]);
-        }}
+                displayStock(favorites[i]);
+            }
+        }
         System.out.println("");
 
         System.out.println(" 1.) Search for a Company");
@@ -189,7 +190,7 @@ class terriertrack {
     // index if it finds it, and -1 otherwise
     private static int findStock(Stock s, Stock[] list) {
         for (int i = 0; i < list.length; i++) {
-            if (list[i].equals(s)) {
+            if (list[i] != null && list[i].equals(s)) {
                 return i;
             }
         }
@@ -207,6 +208,7 @@ class terriertrack {
         int j = findEmptySlot(list);
 
         if (j != -1) {
+            s.updateShares(n - 1);
             holdings[j] = s;
             return true;
         }
@@ -230,7 +232,7 @@ class terriertrack {
     private static boolean buyStock(Stock s, int n) {
         double p = s.getCurrPrice();
         if (n * p <= BALANCE && addToList(s, holdings, n)) {
-            BALANCE -= p;
+            BALANCE -= n * p;
             return true;
         }
         return false;
@@ -258,7 +260,7 @@ class terriertrack {
 
     // Main method
     public static void main(String[] args) {
-        
+
         // We start our interface on the welcome page.
         displayWelcome();
 
@@ -267,7 +269,7 @@ class terriertrack {
             System.out.println("Type 'Home' to go to the home page.");
 
             String input = myObj.nextLine(); // Read user input
-            // myObj.close() 
+            // myObj.close()
 
             if (input.equals("Home") || input.equals("home")) {
                 break;
@@ -286,8 +288,7 @@ class terriertrack {
             System.out.println("Type the number to choose an option.");
 
             String input = myObj.nextLine(); // Read user input
-            // myObj.close() 
-
+            // myObj.close()
 
             if (input.equals("1")) {
 
@@ -297,7 +298,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("Enter a Valid Company Code in all CAPS.");
                     name = value.nextLine();
-                    // value.close()   
+                    // value.close()
                     s = search(name);
                     if (s == null) {
                         System.out.println("Sorry, that company doesn't exist in our system. Try again.");
@@ -315,9 +316,12 @@ class terriertrack {
                     System.out.println("You don't currently own any stocks.");
                 } else {
                     for (int i = 0; i < holdings.length; i++) {
-                        System.out.println(holdings[i]);
-                        System.out.println(holdings[i].getShares());
-                        System.out.println("");
+                        if (holdings[i] != null) {
+                            System.out.println(holdings[i]);
+                            System.out.println("Shares owned: " + holdings[i].getShares());
+                            System.out.println("");
+                        }
+
                     }
                 }
 
@@ -330,7 +334,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to buy?");
                     name = value.nextLine();
-                    value.close();
+                    // value.close();
                     s = search(name);
 
                     if (s == null) {
@@ -346,7 +350,7 @@ class terriertrack {
                     Scanner value2 = new Scanner(System.in);
                     System.out.println("How many shares of " + name + " would you like to buy?");
                     String num = value2.nextLine();
-                    value2.close();
+                    // value2.close();
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
