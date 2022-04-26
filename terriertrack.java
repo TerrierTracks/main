@@ -13,6 +13,12 @@ class terriertrack {
     static Stock[] favorites = new Stock[5];
     static Stock[] holdings = new Stock[20];
 
+    //ANSI Color Definitions for Printing Color in Terminal
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+
     // Object Class to represent a stock
     public static class Stock {
 
@@ -104,6 +110,16 @@ class terriertrack {
             str += "Low Value: " + this.low + "\n";
             str += "High Value: " + this.high;
             return str;
+        }
+
+        private double dayChangePrice() {
+            double changePrice = this.currPrice-this.openingPrice;
+            return changePrice;
+        }
+    
+        private double dayChangePercent() {
+            double changePercent = (this.dayChangePrice()/this.openingPrice)*100;
+            return changePercent;
         }
     }
 
@@ -262,9 +278,18 @@ class terriertrack {
         return false;
     }
 
+    
+
     // displayStock - displays key information of stock s in single line
     public static void displayStock(Stock s) {
-        System.out.println(s.getName() + " " + s.getCurrPrice());
+        double change = s.dayChangePercent();
+
+        if (change < 0.0) {
+            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_RED + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
+        } else {
+            System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_GREEN + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
+        }
+        
     }
 
     // Main method
