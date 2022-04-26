@@ -229,6 +229,8 @@ class terriertrack {
             } else if (list[i].equals(s)) {
                 list[i] = null;
                 return true;
+            } else {
+                continue;
             }
         }
         System.out.println("Stock cannot be found");
@@ -382,7 +384,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to sell?");
                     name = value.nextLine();
-                    value.close();
+                    // value.close();
                     s = search(name);
 
                     if (s == null) {
@@ -398,7 +400,7 @@ class terriertrack {
                     Scanner value2 = new Scanner(System.in);
                     System.out.println("How many shares of " + name + " would you like to sell?");
                     String num = value2.nextLine();
-                    value2.close();
+                    // value2.close();
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
@@ -411,9 +413,10 @@ class terriertrack {
                 boolean success = sellStock(s, n);
 
                 if (success) {
-                    System.out.println("You have successfully bought a share for " + name + ", congratulations.");
+                    System.out
+                            .println("You have successfully sold " + n + " shares for " + name + ", congratulations.");
                 } else {
-                    System.out.println("Sorry, you don't have enough to buy a stock for " + name + ".");
+                    System.out.println("Sorry, we could not sell your " + name + " stock.");
                 }
 
             } else if (input.equals("5")) {
