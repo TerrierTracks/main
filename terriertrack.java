@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.Date;
+import java.util.Arrays;
+import java.util.Comparator;
 
 //main class for our Stock Tracker application
 class terriertrack {
@@ -160,7 +162,8 @@ class terriertrack {
         System.out.println(" 4.) Sell a Stock");
         System.out.println(" 5.) Add to Favorites");
         System.out.println(" 6.) Remove from Favorites");
-        System.out.println(" 7.) Quit\n");
+        System.out.println(" 7.) Top Gainers");
+        System.out.println(" 8.) Quit\n");
 
     }
 
@@ -297,7 +300,18 @@ class terriertrack {
             System.out.println(s.getName() + " " + s.getCurrPrice() + " " + ANSI_GREEN
                     + String.format("%.2f", s.dayChangePercent()) + "%" + ANSI_RESET);
         }
+    }
 
+    // TopGainers - displays the top 5 stocks of the day
+    private static Stock[] TopGainers() {
+        Stock[] copyHoldings = Arrays.copyOf(holdings, holdings.length);
+        Arrays.sort(copyHoldings, Comparator.comparing(Stock::getCurrPrice));
+        if (copyHoldings.length < 5) {
+            return Arrays.copyOfRange(copyHoldings, 0, copyHoldings.length);
+        }
+        else {
+            return Arrays.copyOfRange(copyHoldings, 0, 5);
+        }
     }
 
     // Main method
@@ -521,8 +535,19 @@ class terriertrack {
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
-
             } else if (input.equals("7")) {
+
+                // Display top gainers of holdings 
+                Stock[] sorted = TopGainers();
+                for (int i = 0; i < sorted.length; i++) {
+                    displayStock(sorted[i]);
+                }
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            } else if (input.equals("8")) {
                 System.out.println("Goodbye!");
                 break;
             } else {
