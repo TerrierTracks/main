@@ -375,7 +375,7 @@ class terriertrack {
 
                 }
                 try {
-                    Thread.sleep(6000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
