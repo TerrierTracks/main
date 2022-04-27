@@ -107,7 +107,7 @@ class terriertrack {
         public String toString() {
             String str = this.name + ":\n";
             str += "\n";
-            str += "Code: " + this.ticker + "\n";
+            str += "Ticker: " + this.ticker + "\n";
             str += "Opening Price: " + this.openingPrice + "\n";
             str += "Current Price: " + this.currPrice + "\n";
             str += "Market Cap: " + this.marketCap + "\n";
@@ -182,7 +182,6 @@ class terriertrack {
                 if (stock[0].equals(ticker)) {
                     br.close();
                     return stock;
-
                 }
             }
             br.close();
@@ -352,8 +351,8 @@ class terriertrack {
                 Stock s;
                 while (true) {
                     Scanner value = new Scanner(System.in);
-                    System.out.println("Enter a Valid Company Code in all CAPS.");
-                    name = value.nextLine();
+                    System.out.println("Enter a Valid Company Ticker.");
+                    name = value.nextLine().toUpperCase();
                     // value.close()
                     s = search(name);
                     if (s == null) {
@@ -399,12 +398,12 @@ class terriertrack {
                 while (true) {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to buy?");
-                    name = value.nextLine();
+                    name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
 
                     if (s == null) {
-                        System.out.println("We cannot find that stock name, please enter another name.");
+                        System.out.println("We cannot find that stock, please enter another name.");
                     } else {
                         break;
                     }
@@ -429,9 +428,9 @@ class terriertrack {
                 boolean success = buyStock(s, n);
 
                 if (success) {
-                    System.out.println("You have successfully bought a share for " + name + ", congratulations.");
+                    System.out.println("You have successfully bought " + n + " share(s) of " + name + ", congratulations.");
                 } else {
-                    System.out.println("Sorry, you don't have enough to buy a stock for " + name + ".");
+                    System.out.println("Sorry, you don't have enough to buy " + n + " share(s) of " + name + ".");
                 }
                 try {
                     Thread.sleep(2000);
@@ -446,7 +445,7 @@ class terriertrack {
                 while (true) {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to sell?");
-                    name = value.nextLine();
+                    name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
                     i = findStock(s, holdings);
@@ -478,7 +477,7 @@ class terriertrack {
 
                 if (success) {
                     System.out
-                            .println("You have successfully sold " + n + " shares for " + name + ", congratulations.");
+                            .println("You have successfully sold " + n + " shares of " + name + ", congratulations.");
                 } else {
                     System.out.println("Sorry, we could not sell your " + name + " stock.");
                 }
@@ -495,7 +494,7 @@ class terriertrack {
                 while (true) {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to add to your favourites?");
-                    name = value.nextLine();
+                    name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
 
@@ -519,7 +518,7 @@ class terriertrack {
                 while (true) {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to remove from your favourites?");
-                    name = value.nextLine();
+                    name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
 
