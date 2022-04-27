@@ -308,17 +308,17 @@ class terriertrack {
         double best = 0.0;
         double worst = 0.0;
         Stock[] stocks = new Stock[2];
-        if (holdings.length == 0)
-            return stocks;
         for (int i = 0; i < holdings.length; i++) {
-            double change = holdings[i].dayChangePercent();
-            if (change >= best) {
-                best = change;
-                stocks[0] = holdings[i];
-            }
-            if (change <= worst) {
-                best = worst;
-                stocks[1] = holdings[i];
+            if (holdings[i] != null) {
+                double change = holdings[i].dayChangePercent();
+                if (change >= best) {
+                    best = change;
+                    stocks[0] = holdings[i];
+                }
+                if (change <= worst) {
+                    best = worst;
+                    stocks[1] = holdings[i];
+                }
             }
         }
         return stocks;
@@ -375,7 +375,7 @@ class terriertrack {
 
                 }
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(6000);
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
@@ -555,11 +555,16 @@ class terriertrack {
             } else if (input.equals("7")) {
                 // Display top gainer and loser of holdings 
                 Stock[] sorted = topGainerAndLoser();
-                if (sorted == null) {
+                if (sorted[0] == null) {
                     System.out.println("You haven't bought any stocks yet.");
+                } else {
+                    System.out.println("Your top gainer and loser is:");
+                    displayStock(sorted[0]);
                 }
-                displayStock(sorted[0]);
-                displayStock(sorted[1]);
+                if (sorted[1] != null) {
+                    displayStock(sorted[1]);
+                }
+                
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
