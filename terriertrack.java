@@ -13,7 +13,7 @@ class terriertrack {
     // static variables: BALANCE shows how much money you have to spend, favorites
     // is a list of your favorite stocks, holdings is a list of the stocks you have
     // bought
-    static double BALANCE = 1000;
+    static double BALANCE = 100000;
     static Stock[] favorites = new Stock[5];
     static Stock[] holdings = new Stock[20];
 
@@ -553,7 +553,7 @@ class terriertrack {
                     Thread.currentThread().interrupt();
                 }
             } else if (input.equals("7")) {
-                // Display top gainer and loser of holdings 
+                // Display top gainer and loser of holdings
                 Stock[] sorted = topGainerAndLoser();
                 if (sorted[0] == null) {
                     System.out.println("You haven't bought any stocks yet.");
@@ -564,7 +564,7 @@ class terriertrack {
                 if (sorted[1] != null) {
                     displayStock(sorted[1]);
                 }
-                
+
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
