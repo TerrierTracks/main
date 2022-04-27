@@ -94,6 +94,7 @@ class terriertrack {
             this.shares += n;
         }
 
+        // equals - checks if a stock is equal to another stock
         public boolean equals(Stock other) {
             String otherName = other.getName();
             double otherPrice = other.getCurrPrice();
@@ -104,8 +105,9 @@ class terriertrack {
             return false;
         }
 
+        // toString - represents a stock when it is printed
         public String toString() {
-            String str = this.name + ":\n";
+            String str = "\n" + this.name + ":\n";
             str += "\n";
             str += "Ticker: " + this.ticker + "\n";
             str += "Opening Price: " + this.openingPrice + "\n";
@@ -116,11 +118,15 @@ class terriertrack {
             return str;
         }
 
+        // dayChangePrice - calculates and returns the change between opening and
+        // current price
         private double dayChangePrice() {
             double changePrice = this.currPrice - this.openingPrice;
             return changePrice;
         }
 
+        // dayChangePercent - calculates and returns the percent change between opening
+        // and current price
         private double dayChangePercent() {
             double changePercent = (this.dayChangePrice() / this.openingPrice) * 100;
             return changePercent;
@@ -139,18 +145,13 @@ class terriertrack {
         System.out.println("");
         System.out.println("Home Page");
         System.out.println("");
-        System.out.println("You currently have $" + BALANCE + " in your account.\n");
+        System.out.println("You currently have $" + (String.format("%.2f", BALANCE)) + " in your account.\n");
         if (favorites[0] != null) {
             System.out.println("Your Favorite Stocks Are:");
             for (int i = 0; i < favorites.length; i++) {
                 if (favorites[i] != null) {
                     displayStock(favorites[i]);
                 }
-            }
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
 
         }
@@ -168,6 +169,7 @@ class terriertrack {
     }
 
     // Helper methods
+    // -------------------------------------------------------------------------------------------------
 
     // parse - helper method for stock. Reads a csv file filled with stock
     // information and returns a list of the searched ticker's stock
@@ -259,7 +261,7 @@ class terriertrack {
                 continue;
             }
         }
-        System.out.println("Stock cannot be found");
+        System.out.println("Stock cannot be found\n");
         return false;
     }
 
@@ -307,8 +309,7 @@ class terriertrack {
         Arrays.sort(copyHoldings, Comparator.comparing(Stock::getCurrPrice));
         if (copyHoldings.length < 5) {
             return Arrays.copyOfRange(copyHoldings, 0, copyHoldings.length);
-        }
-        else {
+        } else {
             return Arrays.copyOfRange(copyHoldings, 0, 5);
         }
     }
@@ -329,7 +330,7 @@ class terriertrack {
             if (input.equals("Home") || input.equals("home")) {
                 break;
             } else {
-                System.out.println(input + " is an invalid input. Try again.");
+                System.out.println(input + " is an invalid input. Try again.\n");
             }
         }
 
@@ -364,7 +365,7 @@ class terriertrack {
 
                 }
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(6000);
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
@@ -372,18 +373,22 @@ class terriertrack {
             } else if (input.equals("2")) {
 
                 // This will display all the stocks in holdings, provided the list isn't empty
-                if (holdings.length == 0) {
-                    System.out.println("You don't currently own any stocks.");
-                } else {
-                    for (int i = 0; i < holdings.length; i++) {
-                        if (holdings[i] != null) {
-                            System.out.println(holdings[i]);
-                            System.out.println("Shares owned: " + holdings[i].getShares());
-                            System.out.println("");
-                        }
+                int count = 0;
 
+                for (int i = 0; i < holdings.length; i++) {
+                    if (holdings[i] != null) {
+                        System.out.println(holdings[i]);
+                        System.out.println("Shares owned: " + holdings[i].getShares());
+                        System.out.println("");
+                    } else {
+                        count++;
                     }
+
                 }
+                if (count == holdings.length) {
+                    System.out.println("You don't currently own any stocks.\n");
+                }
+
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ex) {
@@ -419,7 +424,7 @@ class terriertrack {
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
-                        System.out.println("Not a valid number of stocks to buy.");
+                        System.out.println("Not a valid number of stocks to buy.\n");
                     } else {
                         break;
                     }
@@ -428,9 +433,10 @@ class terriertrack {
                 boolean success = buyStock(s, n);
 
                 if (success) {
-                    System.out.println("You have successfully bought " + n + " share(s) of " + name + ", congratulations.");
+                    System.out.println(
+                            "You have successfully bought " + n + " share(s) of " + name + ", congratulations.\n");
                 } else {
-                    System.out.println("Sorry, you don't have enough to buy " + n + " share(s) of " + name + ".");
+                    System.out.println("Sorry, you don't have enough to buy " + n + " share(s) of " + name + ".\n");
                 }
                 try {
                     Thread.sleep(2000);
@@ -467,7 +473,7 @@ class terriertrack {
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
-                        System.out.println("Not a valid number of stocks to sell.");
+                        System.out.println("Not a valid number of stocks to sell.\n");
                     } else {
                         break;
                     }
@@ -477,9 +483,9 @@ class terriertrack {
 
                 if (success) {
                     System.out
-                            .println("You have successfully sold " + n + " shares of " + name + ", congratulations.");
+                            .println("You have successfully sold " + n + " shares of " + name + ", congratulations.\n");
                 } else {
-                    System.out.println("Sorry, we could not sell your " + name + " stock.");
+                    System.out.println("Sorry, we could not sell your " + name + " stock.\n");
                 }
                 try {
                     Thread.sleep(2000);
@@ -493,7 +499,7 @@ class terriertrack {
                 Stock s;
                 while (true) {
                     Scanner value = new Scanner(System.in);
-                    System.out.println("What Stock do you wish to add to your favourites?");
+                    System.out.println("What Stock do you wish to add to your favorites?");
                     name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
@@ -502,6 +508,7 @@ class terriertrack {
                         System.out.println("We cannot find that stock name, please enter another name.");
                     } else {
                         addToList(s, favorites, 1);
+                        System.out.println(name + " has been added to your favorites.\n");
                         break;
                     }
                 }
@@ -517,7 +524,7 @@ class terriertrack {
                 Stock s;
                 while (true) {
                     Scanner value = new Scanner(System.in);
-                    System.out.println("What Stock do you wish to remove from your favourites?");
+                    System.out.println("What Stock do you wish to remove from your favorites?");
                     name = value.nextLine().toUpperCase();
                     // value.close();
                     s = search(name);
@@ -526,6 +533,7 @@ class terriertrack {
                         System.out.println("We cannot find that stock name, please enter another name.");
                     } else {
                         removeFromList(s, favorites);
+                        System.out.println(name + " has been removed from your favorites.\n");
                         break;
                     }
                 }
@@ -536,7 +544,7 @@ class terriertrack {
                 }
             } else if (input.equals("7")) {
 
-                // Display top gainers of holdings 
+                // Display top gainers of holdings
                 Stock[] sorted = TopGainers();
                 for (int i = 0; i < sorted.length; i++) {
                     displayStock(sorted[i]);
@@ -547,7 +555,7 @@ class terriertrack {
                     Thread.currentThread().interrupt();
                 }
             } else if (input.equals("8")) {
-                System.out.println("Goodbye!");
+                System.out.println("Goodbye!\n");
                 break;
             } else {
                 System.out.println(input + " is an invalid input. Try again.");
