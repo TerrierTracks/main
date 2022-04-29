@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2022-04-29T18:37:20.335Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="Gni9uMesySrCjcODsJlr" version="17.4.6" type="github">
+  <diagram id="TsxbVZP9-UU4Wm_U6fs8" name="Page-1">
+    <mxGraphModel dx="733" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="110" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-2" value="Terminal-based user interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="265" y="120" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-3" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-4" value="Welcome &amp;amp; Home Menu" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="190" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-5" value="Data Validation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-6" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="249" width="390" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-7" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="330" width="390" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-8" value="Stock CSV Database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="346" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-9" value="Pseudo Transactions&#39;&lt;br&gt;Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="346" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-10" value="Favorites&lt;br&gt;Manager" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="435" y="346" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-11" value="Pseudo&lt;br&gt;Trading&lt;br&gt;Functionalites" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="264.5" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-12" value="Trading&amp;nbsp;Report&lt;br&gt;Generation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="264.5" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-13" value="Data Import: Sheets API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="376" y="264.5" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-14" value="The architecture of the TerrierTracks system" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="205" y="400" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-15" value="Top Gainers &amp;amp; Loss Leaders" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="264.5" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.051;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="P5kPe5yvLjoiwpcf7ydj-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="140" as="sourcePoint" />
+            <mxPoint x="230" y="50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-17" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180.11" y="220" as="sourcePoint" />
+            <mxPoint x="180" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P5kPe5yvLjoiwpcf7ydj-18" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180.11" y="301" as="sourcePoint" />
+            <mxPoint x="180" y="332" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
