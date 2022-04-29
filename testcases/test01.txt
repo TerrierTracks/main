@@ -1,0 +1,38 @@
+Test 1 - Searching for Apple Stock Info
+
+Inputs:
+
+Home
+
+1
+
+AAPL
+
+---------------------
+
+Expected Result:
+
+Apple Inc:
+
+Ticker: AAPL
+Opening Price: 161.12
+Current Price: 162.88
+Market Cap: 2734177057965
+Low Value: 158.46
+High Value: 163.17
+
+Home Page
+
+You currently have $100000,00 in your account.
+
+
+ 1.) Search for a Company
+ 2.) Show owned Stocks
+ 3.) Buy a Stock
+ 4.) Sell a Stock
+ 5.) Add to Favorites
+ 6.) Remove from Favorites
+ 7.) Top Gainers
+ 8.) Quit
+
+Type the number to choose an option.

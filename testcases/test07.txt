@@ -1,0 +1,57 @@
+Test 7 - Favorite 5 companies, then remove 3 of them (will be displayed on the home page)
+
+Inputs:
+
+Home
+
+5
+
+AAPL
+
+5
+
+GE
+
+5
+
+NFLX
+
+5
+
+COST
+
+5
+
+V
+
+6
+
+NFLX
+
+6
+
+COST
+
+----------------------------------
+
+Expected Results:
+
+Home Page
+
+You currently have $100000,00 in your account.
+
+Your Favorite Stocks Are:
+Apple Inc 162.88 1,09%
+General Electric Company 89.88 1,56%
+Visa Inc 209.95 1,74%
+
+ 1.) Search for a Company
+ 2.) Show owned Stocks
+ 3.) Buy a Stock
+ 4.) Sell a Stock
+ 5.) Add to Favorites
+ 6.) Remove from Favorites
+ 7.) Top Gainers
+ 8.) Quit
+
+Type the number to choose an option.

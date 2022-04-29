@@ -1,0 +1,42 @@
+Test 5 - Buying 10 shares of GE, then selling all 10 shares, then displaying
+
+Inputs:
+
+Home
+
+3
+
+GE
+
+10
+
+4
+
+GE
+
+10
+
+2
+
+-------------------------------------
+
+Expected Results:
+
+You don't currently own any stocks.
+
+
+Home Page
+
+You currently have $100000,00 in your account.
+
+
+ 1.) Search for a Company
+ 2.) Show owned Stocks
+ 3.) Buy a Stock
+ 4.) Sell a Stock
+ 5.) Add to Favorites
+ 6.) Remove from Favorites
+ 7.) Top Gainers
+ 8.) Quit
+
+Type the number to choose an option.

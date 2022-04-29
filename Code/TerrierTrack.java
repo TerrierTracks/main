@@ -342,6 +342,7 @@ class terriertrack {
             } else {
                 System.out.println(input + " is an invalid input. Try again.\n");
             }
+            myObj.close();
         }
 
         // User has entered the Home Page, we display options for the user and ask
@@ -354,7 +355,6 @@ class terriertrack {
             System.out.println("Type the number to choose an option.");
 
             String input = myObj.nextLine(); // Read user input
-            // myObj.close()
 
             if (input.equals("1")) {
 
@@ -364,7 +364,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("Enter a Valid Company Ticker.");
                     name = value.nextLine().toUpperCase();
-                    // value.close()
+
                     s = search(name);
                     if (s == null) {
                         System.out.println("Sorry, that company doesn't exist in our system. Try again.");
@@ -414,7 +414,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to buy?");
                     name = value.nextLine().toUpperCase();
-                    // value.close();
+
                     s = search(name);
 
                     if (s == null) {
@@ -422,6 +422,7 @@ class terriertrack {
                     } else {
                         break;
                     }
+
                 }
 
                 // Input number of shares
@@ -430,7 +431,6 @@ class terriertrack {
                     Scanner value2 = new Scanner(System.in);
                     System.out.println("How many shares of " + name + " would you like to buy?");
                     String num = value2.nextLine();
-                    // value2.close();
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
@@ -438,6 +438,7 @@ class terriertrack {
                     } else {
                         break;
                     }
+
                 }
 
                 boolean success = buyStock(s, n);
@@ -462,7 +463,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to sell?");
                     name = value.nextLine().toUpperCase();
-                    // value.close();
+
                     s = search(name);
                     i = findStock(s, holdings);
 
@@ -471,6 +472,7 @@ class terriertrack {
                     } else {
                         break;
                     }
+
                 }
 
                 // Input number of shares
@@ -479,7 +481,6 @@ class terriertrack {
                     Scanner value2 = new Scanner(System.in);
                     System.out.println("How many shares of " + name + " would you like to sell?");
                     String num = value2.nextLine();
-                    // value2.close();
 
                     n = Integer.parseInt(num);
                     if (n <= 0) {
@@ -487,6 +488,7 @@ class terriertrack {
                     } else {
                         break;
                     }
+
                 }
 
                 boolean success = sellStock(holdings[i], n);
@@ -511,7 +513,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to add to your favorites?");
                     name = value.nextLine().toUpperCase();
-                    // value.close();
+
                     s = search(name);
 
                     if (s == null) {
@@ -536,7 +538,7 @@ class terriertrack {
                     Scanner value = new Scanner(System.in);
                     System.out.println("What Stock do you wish to remove from your favorites?");
                     name = value.nextLine().toUpperCase();
-                    // value.close();
+
                     s = search(name);
 
                     if (s == null) {
