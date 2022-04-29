@@ -1,15 +1,15 @@
 # Terrier Tracks
 
-A stock tracking app with a simple and interactive UI through the terminal.
+A stock tracking & trading simulator app with a simple & interactive UI through the terminal.
 
 ## Getting Started
 
 ### Installing
 
-* Download/Pull all files to a single folder on your computer.
+* Download all files to a single folder on your computer (or clone this repo).
 
 ### Executing program
 
-* How to run the program
+* How to run the program?
 * Make sure terriertracks.java and TerrierTracksStocks.csv are in the same folder.
-* Run terriertracks.java to start the program.
+* Run terriertracks.java "without debugging" to start the program in any IDE (e.g. VSCode).
