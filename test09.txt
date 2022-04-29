@@ -1,0 +1,13 @@
+Test 9 - Quit the program
+
+Inputs
+
+Home
+
+8
+
+------------------------
+
+Expected Result:
+
+Goodbye!
